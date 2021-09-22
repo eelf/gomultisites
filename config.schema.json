@@ -1,0 +1,24 @@
+{
+	"$schema": "",
+	"type": "object",
+	"properties": {
+		"cert_base": {"type": "string"},
+		"sites": {
+			"type": "object",
+			"patternProperties": {
+				"^[-.a-z0-9]+$": {
+					"type": "object",
+					"properties": {
+						"port": {"type": "string"},
+						"key": {"type": "string"},
+						"cert": {"type": "string"}
+					},
+					"additionalProperties": false,
+					"required": ["port"]
+				}
+			}
+		}
+	},
+	"additionalProperties": false,
+	"required": ["sites"]
+}

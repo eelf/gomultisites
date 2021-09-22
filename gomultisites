@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# PROVIDE: gomultisites
+# REQUIRE: networking
+# KEYWORD:
+
+. /etc/rc.subr
+
+name="gomultisites"
+rcvar=$(set_rcvar)
+
+load_rc_config $name
+: ${gomultisites_enable:=no}
+: ${gomultisites_conf:="/usr/local/etc/gomultisites.json"}
+
+gomultisites_command="/usr/local/sbin/gomultisites"
+pidfile="/var/run/${name}.pid"
+logfile="/var/log/${name}.log"
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -o ${logfile} -r ${gomultisites_command} ${gomultisites_conf}"
+reload_cmd="kill -INT $(cat ${pidfile})"
+extra_commands="reload"
+
+run_rc_command "$1"

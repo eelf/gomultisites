@@ -1,0 +1,13 @@
+{
+	"cert_base": "/usr/local/etc/cert/",
+	"sites": {
+		"example.com": {
+			"port": "2001",
+			"key": "example.com.key",
+			"cert": "example.com.cert"
+		},
+		"httponly.com": {
+			"port": "2004"
+		}
+	}
+}
